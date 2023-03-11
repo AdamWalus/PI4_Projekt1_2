@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ConsoleApp8
 {
 
-    public class Wczytywanie
+    public class Hotel
     {
         [Name("Lp.")]
         public int LpNumber { get; set; }

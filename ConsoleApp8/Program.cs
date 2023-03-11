@@ -6,6 +6,7 @@ using System.Linq;
 using System.Xml.Linq;
 using CsvHelper.Configuration.Attributes;
 using CsvHelper.Configuration;
+using ConsoleApp8;
 
 namespace P4_Projekt_1
 {
@@ -19,29 +20,50 @@ namespace P4_Projekt_1
         {
 
             Console.WriteLine("test");
-            List<dynamic> result;
+            List<Hotel> result;
             using (var streamReader = new StreamReader(@"hotele.csv", System.Text.Encoding.UTF8))
             {
-                var csvConfig = new CsvConfiguration(CultureInfo.CurrentCulture) //CultureInfo - formatowanie 
+                var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture) //CultureInfo - formatowanie 
                 {
                     Delimiter = ";",
                     HasHeaderRecord=true
+
                 };
                 
                 using (var csvReader = new CsvReader(streamReader, csvConfig))
                 {
                     //csvReader.Configuration.Delimiter = ";";
-                    result = csvReader.GetRecords<dynamic>().ToList();
+                    //result = csvReader.GetRecords<dynamic>().ToList();
+                    //csvReader.Configuration.RegisterClassMap<HotelMap>();
+                    result = csvReader.GetRecords<Hotel>().ToList();
                 }
             }
+
+
+
 
             foreach (var details in result)
             {
                // Console.WriteLine($"Lp.: {details.LpNumber}");
-                Console.WriteLine($"Nazwa własna: {details.Nazwa_Wlasna}");
-                Console.WriteLine($"Telefon: {details.Telefon}");
+                Console.WriteLine($"{details.LpNumber} {details.Nazwa_Wlasna} {details.Telefon} {details.Email} {details.Charakter_Uslug} {details.Kategoria_Obiektu} {details.Rodzaj_Obiektu} {details.Adres}");
+               
             }
 
+        }
+
+        public sealed class HotelMap : ClassMap<Hotel>
+        {
+            public HotelMap()
+            {
+                Map(m => m.LpNumber).Index(0);
+                Map(m => m.Nazwa_Wlasna).Index(1);
+                Map(m => m.Telefon).Index(2);
+                Map(m => m.Email).Index(3);
+                Map(m => m.Charakter_Uslug).Index(4);
+                Map(m => m.Kategoria_Obiektu).Index(5);
+                Map(m => m.Rodzaj_Obiektu).Index(6);
+                Map(m => m.Adres).Index(7);
+            }
         }
 
 
