@@ -3,24 +3,41 @@ using CsvHelper;
 using System.IO;
 using System.Globalization;
 using System.Linq;
-Console.WriteLine("Hello, World!");
-Console.WriteLine("Hello, World!");
+using System.Xml.Linq;
+using CsvHelper.Configuration.Attributes;
+using CsvHelper.Configuration;
 
 namespace P4_Projekt_1
 {
-   
+    //Lp.;Nazwa własna;Telefon;Email;Charakter usług;Kategoria obiektu;Rodzaj obiektu;Adres
+
+
 
     class Program
     {
         static void Main(string[] args)
         {
+
             Console.WriteLine("test");
+            List<dynamic> result;
             using (var streamReader = new StreamReader(@"hotele.csv"))
             {
-                using (var csvReader = new CsvReader(streamReader, CultureInfo.InvariantCulture)) //CultureInfo - formatowanie 
+                var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture) //CultureInfo - formatowanie 
                 {
-                    var records = csvReader.GetRecords<dynamic>().ToList();
+                    Delimiter = ";"
+                };
+                using (var csvReader = new CsvReader(streamReader, csvConfig))
+                {
+                    //csvReader.Configuration.Delimiter = ";";
+                    result = csvReader.GetRecords<dynamic>().ToList();
                 }
+            }
+
+            foreach (var details in result)
+            {
+                //Console.WriteLine($"Lp.: {details.Lp}");
+                //Console.WriteLine($"Nazwa własna: {details.Nazwa_Wlasna}");
+                Console.WriteLine($"Telefon: {details.Telefon}");
             }
         }
 
@@ -28,4 +45,14 @@ namespace P4_Projekt_1
         //1. Wczytać dane z pliku hotele.csv z użyciem biblioteki CsvHelper
         //2. Wyszukać wszystkie hotele, których nazwa zaczyna się na literę 's'
     }
+
+
+
+
+
+
+
+  
+
+   
 }
