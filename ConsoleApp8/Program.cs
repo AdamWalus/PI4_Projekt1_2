@@ -20,12 +20,14 @@ namespace P4_Projekt_1
 
             Console.WriteLine("test");
             List<dynamic> result;
-            using (var streamReader = new StreamReader(@"hotele.csv"))
+            using (var streamReader = new StreamReader(@"hotele.csv", System.Text.Encoding.UTF8))
             {
-                var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture) //CultureInfo - formatowanie 
+                var csvConfig = new CsvConfiguration(CultureInfo.CurrentCulture) //CultureInfo - formatowanie 
                 {
-                    Delimiter = ";"
+                    Delimiter = ";",
+                    HasHeaderRecord=true
                 };
+                
                 using (var csvReader = new CsvReader(streamReader, csvConfig))
                 {
                     //csvReader.Configuration.Delimiter = ";";
@@ -35,10 +37,11 @@ namespace P4_Projekt_1
 
             foreach (var details in result)
             {
-                //Console.WriteLine($"Lp.: {details.Lp}");
-                //Console.WriteLine($"Nazwa własna: {details.Nazwa_Wlasna}");
+               // Console.WriteLine($"Lp.: {details.LpNumber}");
+                Console.WriteLine($"Nazwa własna: {details.Nazwa_Wlasna}");
                 Console.WriteLine($"Telefon: {details.Telefon}");
             }
+
         }
 
 

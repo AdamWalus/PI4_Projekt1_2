@@ -11,8 +11,8 @@ namespace ConsoleApp8
     public class Wczytywanie
     {
         [Name("Lp.")]
-        public int Lp { get; set; }
-        [Name("Nazwa wlasna")]
+        public int LpNumber { get; set; }
+        [Name("Nazwa własna")]
         public string Nazwa_Wlasna { get; set; }
         [Name("Telefon")]
         public string Telefon { get; set; }
