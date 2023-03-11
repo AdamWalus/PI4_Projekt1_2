@@ -35,7 +35,7 @@ namespace P4_Projekt_1
                     //csvReader.Configuration.Delimiter = ";";
                     //result = csvReader.GetRecords<dynamic>().ToList();
                     //csvReader.Configuration.RegisterClassMap<HotelMap>();
-                    result = csvReader.GetRecords<Hotel>().ToList();
+                    result = csvReader.GetRecords<Hotel>().ToList(); //Wczytujemy dane z CSV i zwracamy liste obiektow hotel
                 }
             }
 
@@ -44,9 +44,9 @@ namespace P4_Projekt_1
 
             foreach (var details in result)
             {
-               // Console.WriteLine($"Lp.: {details.LpNumber}");
-                Console.WriteLine($"{details.LpNumber} {details.Nazwa_Wlasna} {details.Telefon} {details.Email} {details.Charakter_Uslug} {details.Kategoria_Obiektu} {details.Rodzaj_Obiektu} {details.Adres}");
-               
+                // Console.WriteLine($"Lp.: {details.LpNumber}");
+                Console.WriteLine($"{details.LpNumber,-5} {details.Nazwa_Wlasna,-30} {details.Telefon,-20} {details.Email,-30} {details.Charakter_Uslug,-20} {details.Kategoria_Obiektu,-20} {details.Rodzaj_Obiektu,-20} {details.Adres,-30}");
+
             }
 
         }
