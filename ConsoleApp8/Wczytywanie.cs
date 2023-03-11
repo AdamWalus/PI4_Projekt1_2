@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp8
 {
-    internal class Wczytywanie
+    public class Wczytywanie
     {
+        public string Name;
     }
 }
