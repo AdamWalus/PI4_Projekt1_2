@@ -37,6 +37,8 @@ namespace P4_Projekt_1
                     //result = csvReader.GetRecords<dynamic>().ToList();
                     //csvReader.Configuration.RegisterClassMap<HotelMap>();
                     result = csvReader.GetRecords<Hotel>().ToList(); //Wczytujemy dane z CSV i zwracamy liste obiektow hotel
+                    
+
                 }
             }
 
@@ -46,9 +48,23 @@ namespace P4_Projekt_1
             foreach (var details in result)
             {
                 // Console.WriteLine($"Lp.: {details.LpNumber}");
-                Console.WriteLine($"{details.LpNumber,-5} {details.Nazwa_Wlasna,-30} {details.Telefon,-20} {details.Email,-30} {details.Charakter_Uslug,-20} {details.Kategoria_Obiektu,-20} {details.Rodzaj_Obiektu,-20} {details.Adres,-30}");
+                //Console.WriteLine($"{details.LpNumber,-5} {details.Nazwa_Wlasna,-30} {details.Telefon,-20} {details.Email,-30} {details.Charakter_Uslug,-20} {details.Kategoria_Obiektu,-20} {details.Rodzaj_Obiektu,-20} {details.Adres,-30}");
 
             }
+
+
+
+            //////////////////////////////////////////////////////////////////////////////////////
+            //2. Wyszukać wszystkie hotele, których nazwa zaczyna się na literę 's'
+
+            var NazwaHoteluNaS = result.Where(x => x.Nazwa_Wlasna.StartsWith("S")).ToList();
+
+            Console.WriteLine($"Found {NazwaHoteluNaS.Count} hotels starting with 's':");
+            foreach (var hotel in NazwaHoteluNaS)
+            {
+                Console.WriteLine(hotel.Nazwa_Wlasna);
+            }
+
 
         }
 
@@ -68,8 +84,8 @@ namespace P4_Projekt_1
         }
 
 
+
         
-        //2. Wyszukać wszystkie hotele, których nazwa zaczyna się na literę 's'
 
 
     }
