@@ -16,6 +16,7 @@ namespace P4_Projekt_1
 
     class Program
     {
+        //1. Wczytać dane z pliku hotele.csv z użyciem biblioteki CsvHelper
         static void Main(string[] args)
         {
 
@@ -67,8 +68,10 @@ namespace P4_Projekt_1
         }
 
 
-        //1. Wczytać dane z pliku hotele.csv z użyciem biblioteki CsvHelper
+        
         //2. Wyszukać wszystkie hotele, których nazwa zaczyna się na literę 's'
+
+
     }
 
 
