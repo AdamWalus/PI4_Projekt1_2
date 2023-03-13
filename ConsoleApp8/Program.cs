@@ -85,12 +85,27 @@ namespace P4_Projekt_1
             var Charakter_Uslug = result.Select(x => x.Charakter_Uslug).Distinct();
             
 
-            Console.WriteLine($"Znaleziono {Charakter_Uslug.Count()} Unikalnych charakterów");
-            foreach (var charakter in Charakter_Uslug)
+            Console.WriteLine($"Znaleziono {Charakter_Uslug.Count()} Unikalnych charakterów usług");
+            foreach (var x in Charakter_Uslug)
             {
-                Console.WriteLine(charakter);
+                Console.WriteLine(x);
             }
+
+
             //5.Wyświetlić wszystkie kategorie hoteli bez powtórzeń
+
+            var Kategorie = result.Select(x => x.Kategoria_Obiektu).Distinct();
+
+
+            Console.WriteLine($"Znaleziono {Kategorie.Count()} Unikalnych charakterów usług");
+            foreach (var x in Kategorie)
+            {
+                Console.WriteLine(x);
+            }
+
+
+
+
             //6.Wyświetlić hotele, które pochodzą z okolicy Bielska - Białej(numer telefonu zaczyna się 33)
 
 
