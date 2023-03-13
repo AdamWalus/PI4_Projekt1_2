@@ -50,7 +50,7 @@ namespace P4_Projekt_1
             {
                 //Wyswietlanie wszystkiego:
 
-                // Console.WriteLine($"Lp.: {details.LpNumber}");
+                //Console.WriteLine($"Lp.: {details.LpNumber}");
                 //Console.WriteLine($"{details.LpNumber,-5} {details.Nazwa_Wlasna,-30} {details.Telefon,-20} {details.Email,-30} {details.Charakter_Uslug,-20} {details.Kategoria_Obiektu,-20} {details.Rodzaj_Obiektu,-20} {details.Adres,-30}");
 
             }
@@ -76,9 +76,20 @@ namespace P4_Projekt_1
             //var NazwaHoteluNaS = result.Where(x => x.Nazwa_Wlasna.StartsWith("s")).ToList();
 
             Console.WriteLine($"Znaleziono {Charakter_Sezonowy} hoteli na o charakterze sezonowym");
-            
+
+
+
 
             //4.Wyświetlić wszystkie typy charakterów usług bez powtórzeń
+
+            var Charakter_Uslug = result.Select(x => x.Charakter_Uslug).Distinct();
+            
+
+            Console.WriteLine($"Znaleziono {Charakter_Uslug.Count()} Unikalnych charakterów");
+            foreach (var charakter in Charakter_Uslug)
+            {
+                Console.WriteLine(charakter);
+            }
             //5.Wyświetlić wszystkie kategorie hoteli bez powtórzeń
             //6.Wyświetlić hotele, które pochodzą z okolicy Bielska - Białej(numer telefonu zaczyna się 33)
 
