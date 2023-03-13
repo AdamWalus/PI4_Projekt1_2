@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using CsvHelper.Configuration.Attributes;
 using CsvHelper.Configuration;
 using ConsoleApp8;
+using static System.Net.WebRequestMethods;
 
 namespace P4_Projekt_1
 {
@@ -47,6 +48,8 @@ namespace P4_Projekt_1
 
             foreach (var details in result)
             {
+                //Wyswietlanie wszystkiego:
+
                 // Console.WriteLine($"Lp.: {details.LpNumber}");
                 //Console.WriteLine($"{details.LpNumber,-5} {details.Nazwa_Wlasna,-30} {details.Telefon,-20} {details.Email,-30} {details.Charakter_Uslug,-20} {details.Kategoria_Obiektu,-20} {details.Rodzaj_Obiektu,-20} {details.Adres,-30}");
 
@@ -58,17 +61,35 @@ namespace P4_Projekt_1
             //2. Wyszukać wszystkie hotele, których nazwa zaczyna się na literę 's'
 
             var NazwaHoteluNaS = result.Where(x => x.Nazwa_Wlasna.StartsWith("S")).ToList();
+            
 
-            Console.WriteLine($"Found {NazwaHoteluNaS.Count} hotels starting with 's':");
+            Console.WriteLine($"Znaleziono {NazwaHoteluNaS.Count} hoteli na literę s:");
             foreach (var hotel in NazwaHoteluNaS)
             {
                 Console.WriteLine(hotel.Nazwa_Wlasna);
             }
 
+            //3.Obliczyć ile hoteli ma charakter sezonowy
+
+            var Charakter_Sezonowy = result.Where(x => x.Charakter_Uslug.Contains("sezonowy")).Count();
+            //Szukaj w result (csvReader.GetRecords...) Nazwa_Wlasna zaczynająca się od S, wsadz do listy
+            //var NazwaHoteluNaS = result.Where(x => x.Nazwa_Wlasna.StartsWith("s")).ToList();
+
+            Console.WriteLine($"Znaleziono {Charakter_Sezonowy} hoteli na o charakterze sezonowym");
+            
+
+            //4.Wyświetlić wszystkie typy charakterów usług bez powtórzeń
+            //5.Wyświetlić wszystkie kategorie hoteli bez powtórzeń
+            //6.Wyświetlić hotele, które pochodzą z okolicy Bielska - Białej(numer telefonu zaczyna się 33)
+
+
+
+
+
 
         }
 
-        public sealed class HotelMap : ClassMap<Hotel>
+        public sealed class HotelMap : ClassMap<Hotel> //hotelmap dziedziczy po ClassMap<Hotel>, deserializuje plik csv do listy obiektow hotel
         {
             public HotelMap()
             {
