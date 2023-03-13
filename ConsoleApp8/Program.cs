@@ -97,7 +97,7 @@ namespace P4_Projekt_1
             var Kategorie = result.Select(x => x.Kategoria_Obiektu).Distinct();
 
 
-            Console.WriteLine($"Znaleziono {Kategorie.Count()} Unikalnych charakterów usług");
+            Console.WriteLine($"Znaleziono {Kategorie.Count()} kategorii hoteli");
             foreach (var x in Kategorie)
             {
                 Console.WriteLine(x);
@@ -108,9 +108,20 @@ namespace P4_Projekt_1
 
             //6.Wyświetlić hotele, które pochodzą z okolicy Bielska - Białej(numer telefonu zaczyna się 33)
 
+            var HoteleZBielska = result
+                .Where(x => 
+                    x.Telefon.StartsWith("33")
+                    || x.Telefon.StartsWith("033")
+                    || x.Telefon.StartsWith("(033")
+                    || x.Telefon.StartsWith("(0 33")
+                    || x.Telefon.StartsWith("(33")
 
+                    );
 
-
+            foreach (var x in HoteleZBielska)
+            {
+                Console.WriteLine(x.Telefon);
+            }
 
 
         }
