@@ -14,7 +14,7 @@ namespace P4_Projekt_1
     //Lp.;Nazwa własna;Telefon;Email;Charakter usług;Kategoria obiektu;Rodzaj obiektu;Adres
 
 
-
+    //jjjtest
     class Program
     {
         //1. Wczytać dane z pliku hotele.csv z użyciem biblioteki CsvHelper
