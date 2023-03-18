@@ -123,6 +123,18 @@ namespace P4_Projekt_1
                 Console.WriteLine(x.Telefon);
             }
 
+           /* 7. Pogrupować hotele wg kategorii i zwrócić ile hoteli występuje w każdej grupie*/
+            var kategoriaGrupowane = result.GroupBy(x=> x.Kategoria_Obiektu)
+                .Select(g=>new {Kategoria = g.Key, Liczba = g.Count()});
+            foreach (var kategoria in kategoriaGrupowane)
+            {
+                Console.WriteLine($"Kategoria: {kategoria.Kategoria}, liczba hoteli: {kategoria.Liczba}");
+
+            }
+
+            //Pogrupować hotele wg charakteru usług i zwrócić ile hoteli występuje w każdej grupie Materiały referencyjne
+            
+
 
         }
 
