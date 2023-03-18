@@ -133,8 +133,14 @@ namespace P4_Projekt_1
             }
 
             //Pogrupować hotele wg charakteru usług i zwrócić ile hoteli występuje w każdej grupie Materiały referencyjne
-            
 
+            var charakterUslugGrupowanie = result.GroupBy(x => x.Charakter_Uslug)
+                .Select(g => new { Charakter_Uslug = g.Key, Liczba = g.Count() });
+            foreach (var x in charakterUslugGrupowanie)
+            {
+                Console.WriteLine($"Kategoria: {x.Charakter_Uslug}, liczba hoteli: {x.Liczba}");
+
+            }
 
         }
 
